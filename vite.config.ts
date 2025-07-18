@@ -8,7 +8,7 @@ export default defineConfig({
         react(),
         keycloakify({
             accountThemeImplementation: "none",
-            themeName: 'rocket-chat-theme'
+            themeName: 'rocket-chat-theme-test'
         })
     ]
 });
