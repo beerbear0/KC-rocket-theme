@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://im-tst.mkb.ru/assets/background_dark.png') !important;
+    background-image: url('./assets/background_dark.png') !important;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
