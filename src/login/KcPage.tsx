@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
@@ -16,51 +16,39 @@ export default function KcPage(props: { kcContext: KcContext }) {
 
     const { i18n } = useI18n({ kcContext });
 
-    useEffect(() => {
-            setTimeout (() => {
-                const button = document.getElementById('kc-login') as HTMLInputElement
-                const spanLogin = document.querySelector('span[data-kc-msg="usernameOrEmail"]') as HTMLDivElement;
-                const spanPassword = document.querySelector('span[data-kc-msg="password"]');
-                const form = document.getElementById('kc-form-login');
-                const loaderBox = document.getElementById('loader-box') as HTMLElement;
+    setTimeout (() => {
+        const button = document.getElementById('kc-login') as HTMLInputElement
+        const spanLogin = document.querySelector('span[data-kc-msg="usernameOrEmail"]') as HTMLDivElement;
+        const spanPassword = document.querySelector('span[data-kc-msg="password"]');
+        const form = document.getElementById('kc-form-login');
+        const loaderBox = document.getElementById('loader-box') as HTMLElement;
 
-                if (button) {
-                    button.value = 'Войти'
-                }
-    
-                if (spanLogin) {
-                    spanLogin.textContent = "Логин";
-                }
-                if (spanPassword) {
-                    spanPassword.textContent = "Пароль";
-                }
+        if (button) {
+            button.value = 'Войти'
+        }
 
-                
-                console.log(loaderBox, 'loaderBox')
-                const handleSubmit = () => {
-                    loaderBox.style.display = 'flex';
-  
-                    // Пытаемся определить завершение загрузки новой страницы
-                    window.addEventListener('pageshow', () => {
-                        loaderBox.style.display = 'none';
-                    });
-  
-                    // Фолбэк для SPA или если переход не произошел
-                    setTimeout(() => {
-                        loaderBox.style.display = 'none';
-                    }, 5000);
-                }
+        if (spanLogin) {
+            spanLogin.textContent = "Логин";
+        }
+        if (spanPassword) {
+            spanPassword.textContent = "Пароль";
+        }
+
         
-                form?.addEventListener('submit', handleSubmit)
-        
-                // return () => form?.removeEventListener('submit', handleSubmit)
-            }, 100)
-    }, []);
+        const handleSubmit = () => {
+            loaderBox.style.display = 'flex';
 
-    useEffect(() => {
-       
-    }, []);
+            window.addEventListener('pageshow', () => {
+                loaderBox.style.display = 'none';
+            });
 
+            setTimeout(() => {
+                loaderBox.style.display = 'none';
+            }, 5000);
+        }
+
+        form?.addEventListener('submit', handleSubmit)
+    }, 200)
 
     return (
         <Suspense>
