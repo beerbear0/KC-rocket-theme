@@ -57,6 +57,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     default:
                         return (
                             <>
+                                <div className="test">По многочисленным просьбам: ХУЙ</div>
                                 <DefaultPage
                                     kcContext={kcContext}
                                     i18n={i18n}
@@ -66,17 +67,19 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     UserProfileFormFields={UserProfileFormFields}
                                     doMakeUserConfirmPassword={doMakeUserConfirmPassword}
                                 />
-                                    <div id='loader-box' className="loaderBox">
-                                        <div className='popup'>
-                                            <p className="loaderText">Подтвердите вход в приложении Indeed</p>
-                                            <div className="loader" />
-                                            <p className="loaderText">
-                                                Если у вас нет на телефоне приложения Indeed Key, вы можете установить его по инструкции
-                                                <a className='link' href="mkb.ru/udald">mkb.ru/udald</a>
-                                            </p>
-                                           
-                                       </div>
+
+                                <div id="loader-box" className="loaderBox">
+                                    <div className="popup">
+                                        <p className="loaderText">Подтвердите вход в приложении Indeed</p>
+                                        <div className="loader" />
+                                        <p className="loaderText">
+                                            Если у вас нет на телефоне приложения Indeed Key, вы можете установить его
+                                            по инструкции
+                                            <a className="link" href="mkb.ru/udald">mkb.ru/udald</a>
+                                        </p>
+
                                     </div>
+                                </div>
                             </>
                         );
                 }
