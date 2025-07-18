@@ -12,7 +12,7 @@
         "build": "tsc && vite build",
         "clean": "rimraf ./dist_keycloak && rimraf ./dist",
         "get-git-hash": "node -p \"require('child_process').execSync('git rev-parse --short HEAD').toString().trim()\"",
-        "build-keycloak-theme": "npm run clean && yarn build && yarn build-keycloak-jar",
+        "build-keycloak-theme": "npm run clean && yarn build && yarn build-keycloak-jar && rimraf ./dist_keycloak/.gitignore",
         "build-keycloak-jar": "node ./scripts/build-with-hash.js",
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write"
