@@ -57,7 +57,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     default:
                         return (
                             <>
-                                <div className="test">По многочисленным просьбам: ХУЙ</div>
                                 <DefaultPage
                                     kcContext={kcContext}
                                     i18n={i18n}
