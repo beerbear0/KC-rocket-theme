@@ -10,7 +10,9 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "build-keycloak-theme": "npm run build && keycloakify build",
+        "get-git-hash": "node -p \"require('child_process').execSync('git rev-parse --short HEAD').toString().trim()\"",
+        "build-keycloak-theme": "npm run build && npm run build-keycloak-jar",
+        "build-keycloak-jar": "node ./scripts/build-with-hash.js",
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write"
     },
