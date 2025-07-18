@@ -2,14 +2,11 @@ import fs from 'fs'
 import { execSync } from 'child_process'
 
 try {
-    // 1. Получаем git hash
     const hash = execSync('git rev-parse --short HEAD').toString().trim();
 
-    // 2. Запускаем стандартную сборку Keycloakify
     console.log('Running keycloakify build...');
     execSync('keycloakify build', { stdio: 'inherit' });
 
-    // 3. Переименовываем полученный JAR-файл
     const originalPath = ['./dist_keycloak/keycloak-theme-for-kc-22-to-25.jar', './dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar'];
     const newPath = [`./dist_keycloak/keycloak-theme-for-kc-22-to-25-${hash}.jar`, `./dist_keycloak/keycloak-theme-for-kc-all-other-versions-${hash}.jar`];
 
@@ -17,7 +14,7 @@ try {
         fs.renameSync(originalPath[0], newPath[0]);
         console.log(`Successfully renamed to ${newPath[0]}`);
     } else {
-        console.error('Error: Original JAR file not found at', originalPath);
+        console.error('Error: Original JAR file not found at', originalPath[0]);
         process.exit(1);
     }
 
@@ -25,7 +22,7 @@ try {
         fs.renameSync(originalPath[1], newPath[1]);
         console.log(`Successfully renamed to ${newPath[1]}`);
     } else {
-        console.error('Error: Original JAR file not found at', originalPath);
+        console.error('Error: Original JAR file not found at', originalPath[1]);
         process.exit(1);
     }
 } catch (error) {
